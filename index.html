@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Neighborhood Map</title>
+		<!--css file and bootstrap--->
+		<link href="css/bootstrap.min.css" rel="stylesheet"/>
+		<link href="css/style.css" rel="stylesheet"/>
+		<!--Google API--->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	</head>
+	<body>
+		<div class="container">
+			<div class="col-md-4 text-container">
+				<h3>My favorite places in Boston</h3>
+				<form id="" class="search-area" data-bind="submit: ">
+					<input type="text" name="" id="" class="search-input">
+					<input type="submit" value="search" class="search-btn">
+				</form>
+			</div>
+			<ul data-bind="foreach: " class="">
+				<li data-bind="text: name, click: $parent."></li>
+			</ul>
+			<!--Google map DOM-->
+			<div class="col-md-8 map-container">
+				<div id="google-map" class=""></div>
+			</div>
+		</div>
+		
+		
+		
+		
+		<!--javascript files and library-->
+		<script src="js/lib/jquery-2.2.4.min.js"></script>
+		<script src="js/lib/bootstrap.min.js"></script>
+		<script src="js/lib/knockoutjs-v3.4.0.js"></script>
+		<script src="js/model.js"></script>
+		<script src="js/script.js"></script>
+	</body>
+</html>
