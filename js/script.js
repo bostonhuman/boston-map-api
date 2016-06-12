@@ -125,7 +125,7 @@ var viewModel = function() {
     // Set required parameters for authentication & search
     var parameters = {
       oauth_consumer_key: '5AeOFx9AMNxBJTgnyBRi-A',
-      oauth_token: '83bHW-kCffl6NKL2LYlV3BAsKlcQsHYu',
+      oauth_token: 'mwDAZhr4v2D1XIvr7279B-SfnVSjOZKp',
       oauth_nonce: nonce(20),
       oauth_timestamp: Math.floor(Date.now() / 1000),
       oauth_signature_method: 'HMAC-SHA1',
@@ -138,7 +138,7 @@ var viewModel = function() {
 
     // Set other API parameters
     var consumerSecret = 'XbxEEnJF34PvOrbQ_o3Pr4UBwjM';
-    var tokenSecret = 'CUSOZVnJqRkUTlgsDdIeXMQWzrI';
+    var tokenSecret = 'isx3A_VZDb35nX0UzSTDC2wowQU';
 
     var signature = oauthSignature.generate(httpMethod, yelpURL, parameters, consumerSecret, tokenSecret);
 
