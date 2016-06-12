@@ -220,3 +220,9 @@ nav {
     height: 80vh;
   }
 }
+
+@media screen and (max-width: 668px) {
+	h1 {
+		font-size: 1.2em;
+	}
+}
