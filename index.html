@@ -6,25 +6,45 @@
 		<link href="css/bootstrap.min.css" rel="stylesheet"/>
 		<link href="css/style.css" rel="stylesheet"/>
 		<!--Google API--->
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB-mlmnIbiL0cC31-OAC3GvA40c238jd50"></script>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	</head>
 	<body>
 		<div class="container">
-			<div class="col-md-4 text-container">
-				<h3>My favorite places in Boston</h3>
-				<form id="" class="search-area" data-bind="submit: ">
-					<input type="text" name="" id="" class="search-input">
-					<input type="submit" value="search" class="search-btn">
-				</form>
-			</div>
-			<ul data-bind="foreach: " class="">
-				<li data-bind="text: name, click: $parent."></li>
-			</ul>
-			<!--Google map DOM-->
-			<div class="col-md-8 map-container">
-				<div id="google-map" class=""></div>
-			</div>
-		</div>
+		
+		  <!--List of location name-->
+		  <div class="col-md-3 text-container">
+		    <h1>My favorite places in Boston</h1>
+		    <div id="search">
+		      <form id="boston-search" class="search-area" data-bind="submit: filterBoston">
+		        <input type="text" name="search-string" id="search-str" class="search-input">
+		        <button type="submit" class="btn btn-primary">Search</button>
+		      </form>
+		    </div>
+		    <!--app.js line 16-->
+		    <ul data-bind="foreach: filterBostonList" class="desktop-list">
+		      <li data-bind="text: name, click: $parent.bostonClick"></li>
+		    </ul>
+		  </div>
+		
+		  <!-- Google Maps -->
+		  <div class="col-md-9 map-container">
+		    <div id="map" class="main-map"></div>
+		  </div>
+		
+		  <!-- Start of mobile navigation -->
+		  <nav class="mobile main-menu">
+		    <ul data-bind="foreach: filterBostonList" class="mobile-list">
+		      <li data-bind="text: name, click: $parent.bostonClick" class="mobile-item"></li>
+		    </ul>
+		  </nav>
+		
+		  <div class="navbar navbar-inverse navbar-fixed-top">
+		    <div class="navbar-header pull-right">
+		      <a id="nav-expander" class="nav-expander fixed" href="#"><span></span></a>
+		    </div>
+		  </div>
+		  <!-- End of mobile navigation -->
 		
 		
 		
@@ -33,7 +53,9 @@
 		<script src="js/lib/jquery-2.2.4.min.js"></script>
 		<script src="js/lib/bootstrap.min.js"></script>
 		<script src="js/lib/knockoutjs-v3.4.0.js"></script>
+		<script src="oauth-signature/dist/oauth-signature.min.js"></script>
 		<script src="js/model.js"></script>
 		<script src="js/script.js"></script>
+		<script src="js/mobile.js"></script>
 	</body>
 </html>
