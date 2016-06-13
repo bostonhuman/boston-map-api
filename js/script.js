@@ -91,9 +91,8 @@ var viewModel = function() {
 
   // Create the list of boston locations from the model
   self.createBostonLocations = function() {
-	  // model.js object
     myLocations.forEach(function(bostonItem) {
-	    // array bostonList line 15
+	    // array bostonList
       self.bostonList.push( new Boston(bostonItem) );
     });
   };
@@ -102,7 +101,6 @@ var viewModel = function() {
   self.setBostonClick = function() {
     self.bostonList().forEach(function(boston) {
       google.maps.event.addListener(boston.marker(), 'click', function() {
-	      //index.html line 27 breweryClick
         self.bostonClick(boston);
       });
     });
