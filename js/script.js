@@ -72,7 +72,7 @@ var infoWindow = new google.maps.InfoWindow({
 // Set up the viewModel
 var viewModel = function() {
   'use strict';
-
+// Use observables rather than forcing refreshes manually
   var self = this;
   self.bostonList = ko.observableArray([]);
   self.filterBostonList = ko.observableArray([]);
