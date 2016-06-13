@@ -216,6 +216,7 @@ var viewModel = function() {
         $('#yelp').attr("src", response.businesses[0].rating_img_url);
         $('#yelp-url').attr("href", response.businesses[0].url);
       },
+      // Data requests that fail are handled gracefully using common fallback techniques
       error: function() {
         $('#text').html('Unable to retrieve data from Yelp');
       }
