@@ -21,7 +21,43 @@ var myLocations = [
     lng: -71.06776,
     address: 'Tremont St, Boston, MA 02116',
     neighborhood: 'Boston, MA'
-  }
+  },
+  {
+    name: 'AMC Loews Boston',
+    lat: 42.35313,
+    lng: -71.06392,
+    address: '175 Tremont St, Boston, MA 02111',
+    neighborhood: 'Boston, MA'
+  },
+  {
+    name: 'Museum of Fine Arts',
+    lat: 42.33946,
+    lng: -71.09414,
+    address: '465 Huntington Ave, Boston, MA 02115',
+    neighborhood: 'Boston, MA'
+  },
+  {
+    name: 'Museum of Science',
+    lat: 42.36773,
+    lng: -71.07149,
+    address: '1 1 Science Park, Boston, MA 02114',
+    neighborhood: 'Boston, MA'
+  },
+  {
+    name: 'Franklin Park Zoo',
+    lat: 42.30279,
+    lng: -71.08681,
+    address: '1 Franklin Park Rd, Boston, MA 02121',
+    neighborhood: 'Boston, MA'
+  },
+  {
+    name: 'Zoo New England',
+    lat: 42.30279,
+    lng: -71.08681,
+    address: '1 Franklin Park Rd, Dorchester, MA 02121',
+    neighborhood: 'Boston, MA'
+  },
+  
 ];
 
 // Initialize the map
