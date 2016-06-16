@@ -14,7 +14,8 @@ I will develop a single-page application featuring a map of my favorite places I
   * You can run this app with your own API key if you like, example:
     
   ```
-  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initializeMap" onerror="mapError()" async defer></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initializeMap" 
+  onerror="mapError()" async defer></script>
   ```
 
 ## Components for making the app running 
