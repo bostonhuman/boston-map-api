@@ -8,6 +8,14 @@ I will develop a single-page application featuring a map of my favorite places I
    ```
    git clone https://github.com/bostonhuman/boston-map-api
    ```
+  * Open `index.html` to run the app.
+  * API key is not require and the app should run without error.
+* **Optional**:
+  * You can run this app with your own API key if you like, example:
+    
+  ```
+  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initializeMap" onerror="mapError()" async defer></script>
+  ```
 
 ## Components for making the app running 
 
