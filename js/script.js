@@ -63,11 +63,7 @@ var myLocations = [
 // Initialize the map
 var map;
 
-// Initialize the default infoWindow
-var infoWindow = new google.maps.InfoWindow({
-  // default content
-  content: '<div><h4 id="boston-name"></h4><p id="boston-address"></p><p id="yelp"></p></div>'
-});
+
 
 // Set up the viewModel
 var viewModel = function() {
@@ -76,19 +72,7 @@ var viewModel = function() {
   var self = this;
   self.bostonList = ko.observableArray([]);
   self.filterBostonList = ko.observableArray([]);
-
-  // Create the google map zoomed in Boston
-  self.initialize = function() {
-    var mapCanvas = document.getElementById('map');
-    var cenLatLng = new google.maps.LatLng(42.34852, -71.08230);
-    var mapOptions = {
-      center: cenLatLng,
-      zoom: 12,
-      mapTypeId: google.maps.MapTypeId.ROADMAP
-    };
-    map = new google.maps.Map(mapCanvas, mapOptions);
-  };
-
+  
   // Create the list of boston locations from the model
   self.createBostonLocations = function() {
     myLocations.forEach(function(bostonItem) {
@@ -106,6 +90,11 @@ var viewModel = function() {
     });
   };
 
+// Initialize the default infoWindow
+var infoWindow = new google.maps.InfoWindow({
+// default content
+	content: '<div><h4 id="boston-name"></h4><p id="boston-address"></p><p id="yelp"></p></div>'
+});
 
   self.bostonClick = function(boston) {
     // Set the content of the infoWindow
@@ -137,9 +126,11 @@ var viewModel = function() {
   self.filterBoston = function() {
     // Set the filtered boston list to an empty array
     self.filterBostonList([]);
+    //self.bostonClick();
 
     // Get the search string and the length of the original boston list
-    var searchString = $('#search-str').val().toLowerCase();
+    // Knockout observable for the query
+    var searchString = ko.observable('').val().toLowerCase();
     var len = self.bostonList().length;
 
     // Loop through each boston in the boston list
@@ -228,14 +219,13 @@ var viewModel = function() {
 
   // Add the listener for loading the page
   google.maps.event.addDomListener(window, 'load', function() {
-    self.initialize();
     self.createBostonLocations();
     self.setBostonClick();
-    self.filterBostonList(self.bostonList());
+    self.filterBostonList();
+    self.bostonList();
   });
-};
-
-// Boston constructor to create boston & marks from the model
+  
+  // Boston constructor to create boston & marks from the model
 var Boston = function(data) {
   'use strict';
 
@@ -257,6 +247,43 @@ var Boston = function(data) {
   // Set the marker as a knockout observable
   this.marker = ko.observable(marker);
 };
+  // Search functionality on location names
+    self.query = ko.observable(''); //Creates an observable for the search bar
 
-// Kick everything off!
-ko.applyBindings( new viewModel() );
+    self.filterBostonList = ko.computed(function () {
+        return ko.utils.arrayFilter(self.bostonList(), function(boston) {
+            //Match search with items in observable array
+            var listFilter = boston.name().toLowerCase().indexOf(self.query().toLowerCase()) >= 0;
+            if (listFilter) { //if user input matches any of the location names, show only the matches
+                boston.marker().setVisible(true);
+            } else {
+                boston.marker().setVisible(false); //hide markers and list items that do not match results
+            }
+
+            return listFilter;
+
+        });
+    });
+};
+
+//function initializeMap()
+function initializeMap() {
+    //Map Data
+    var mapCanvas = document.getElementById('map');
+    var cenLatLng = new google.maps.LatLng(42.34852, -71.08230);
+    var mapOptions = {
+      center: cenLatLng,
+      zoom: 12,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+    map = new google.maps.Map(mapCanvas, mapOptions);
+    
+	ko.applyBindings(new viewModel() );
+}
+
+//Alerts user of an error with google map
+function mapError() {
+    alert("Unable to load Google Map API. Please try again later.");
+    console.log('Google Map API is error');
+}
+
