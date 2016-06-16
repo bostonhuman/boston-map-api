@@ -5,8 +5,6 @@
 		<!--css file and bootstrap-->
 		<link href="css/bootstrap.min.css" rel="stylesheet">
 		<link href="css/style.min.css" rel="stylesheet">
-		<!--Google API-->
-		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB-mlmnIbiL0cC31-OAC3GvA40c238jd50"></script>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	</head>
 	<body>
@@ -14,11 +12,11 @@
 		
 		  <!--List of location name-->
 		  <div class="col-md-3 text-container">
-		    <h1>My favorite places in Boston</h1>
+		    <h1 id="heading">My favorite places in Boston</h1>
 		    <div id="search">
 		      <form id="boston-search" class="search-area" data-bind="submit: filterBoston">
-		        <input type="text" name="search-string" id="search-str" class="search-input">
-		        <button type="submit" class="btn btn-primary">Search</button>
+		        <input type="text" name="search-string" id="search-str" class="search-input" data-bind="value: query, valueUpdate: 'keyup'" placeholder="Search locations">
+		        <button type="submit" class="btn btn-primary" data-bind="click: setBostonClick">Search</button>
 		      </form>
 		    </div>
 		    <!--app.js line 16-->
@@ -46,7 +44,14 @@
 		  </div>
 		  <!-- End of mobile navigation -->
 		  <!--Load libraies, frameworks and script.js in one file-->
-		  <script src="js/built-concat.min.js" async></script>
+		  <script src="js/lib/jquery-2.2.4.min.js"></script>
+		  <script src="js/lib/bootstrap.min.js"></script>
+		  <script src="js/lib/knockoutjs-v3.4.0.js"></script>
+		  <script src="oauth-signature/dist/oauth-signature.min.js"></script>
+		  <script src="js/mobile.min.js" async defer></script>
+		  <script src="js/script.min.js" async defer></script>
+		  <!--Google API-->
+		  <script src="https://maps.googleapis.com/maps/api/js?callback=initializeMap" onerror="mapError()" async defer></script>
 		</div>
 	</body>
 </html>
