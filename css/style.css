@@ -34,6 +34,7 @@ li {
   font-size: 1.4em;
   margin: 0.5em 0;
   color: #ffffff;
+  cursor: pointer;
 }
 
 li:hover {
